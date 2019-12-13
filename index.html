@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Arielle Hyde Final Project</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <p>Add Animal to System</p>
+            <form id="newPet">
+                Please Enter Pet's Id Number:<br>
+                <input type="text" id="newId" placeholder="#"><br>
+                Pet's Name:<br>
+                <input type="text" id="newName" placeholder=""><br>
+                Pet's Species:<br>
+                <input type="text" id="newSpecies" placeholder=""><br>
+                Pet's Age:<br>
+                <input type="text" id="newAge" placeholder=""><br>
+                Pet's Gender:<br>
+                <input type="text" id="newGender" placeholder="male or female"><br>
+                Pet's Size:<br>
+                <input type="text" id="newSize" placeholder="small, medium or large"><br>
+                Is the Pet Child Friendly?<br>
+                <input type="text" id="newFriendly" placeholder="true or false"><br>
+                Is the Pet Adoptable?<br>
+                <input type="text" id="newAdoptable" placeholder="true or false"><br>
+                Description of the Pet:<br>
+                <input type="text" id="newDescription" placeholder=""><br>
+                Pet's History:<br>
+                <input type="text" id="newHistory" placeholder=""><br>
+                Intake date and time:<br>
+                <input type="text" id="newIntakeDate" placeholder="date/time"><br>
+                <button v-on:click="addNew">Submit</button>
+            </form>
+        </div>
+            <div class="container">
+                    <h1>Animal Shelter Management</h1>
+                <div id="animals-list">
+                    <h2>{{ name }}</h2>
+                    <select v-on:change="filterList">
+                        <option value="">Select a species of animal...</option>
+                        <option v-for="item in uniqueItemsList">{{item}}</option>
+                    </select>
+                    <select v-on:change="showDetail">
+                        <option value ="">Adoptable</option>
+                        <option>Not Adoptable</option>
+                    </select>
+                    <ul>
+                        <li v-show="species === '' || species === animals.species" 
+                        v-for="animals in animalsList">
+                            <h3>{{animals.name}}</h3>
+                            <p>{{animals.age}}</p>
+                            <p>{{animals.species}}</p>
+                            <p>{{animals.id}}</p>
+                            <p>{{animals.description}}</p>
+                            <p>{{animals.history}}</p>
+                            <p>{{animals.size}}</p>
+                            <p>{{animals.intakeDate}}</p>
+                            <p v-show="showDetail">{{animals.adoptable}}</p>
+                            <p>{{animals.friendly}}</p>
+                    </li>
+                        </li>
+                    </ul>
+            </div>
+</div>
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <script src="app.js"></script>
+    </body>
+</html>
